@@ -26,8 +26,7 @@ public class BOJ_4779 {
         if(n == 0){
             return "-";
         }else{
-            StringBuilder sb = new StringBuilder();
-            return sb.append(cantor(n-1)).append(" ".repeat((int) Math.pow(3, n-1))).append(cantor(n-1)).toString();
+            return cantor(n - 1) + " ".repeat((int) Math.pow(3, n - 1)) + cantor(n - 1);
         }
     }
 }
