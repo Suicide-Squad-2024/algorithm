@@ -3,7 +3,6 @@ package BOJ.BruteForce;
 import java.io.*;
 import java.util.StringTokenizer;
 
-// 21:35
 public class BOJ_19532 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
