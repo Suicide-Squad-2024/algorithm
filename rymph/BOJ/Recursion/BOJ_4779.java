@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
-// 20:00 시작
 public class BOJ_4779 {
     public static void main(String[] args) throws IOException {
 
