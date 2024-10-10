@@ -14,6 +14,7 @@ public class BOJ_14889 {
         int N = Integer.parseInt(st.nextToken());
         int[][] capacity = new int[N][N];
         boolean[] visited = new boolean[N];
+        visited[0] = true;
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -22,7 +23,7 @@ public class BOJ_14889 {
             }
         }
         br.close();
-        dfs(capacity, visited, 0, N, 0);
+        dfs(capacity, visited, 1, N, 1);
         System.out.println(minValue);
     }
 
