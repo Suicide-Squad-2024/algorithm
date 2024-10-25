@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         int[] nums = {1, 2, 3, 4, 6, 7, 8, 9, 10};
-        System.out.println(binarySearch(nums, 11, 9));
+        System.out.println(binarySearch(nums, 0, 9));
     }
     public static int binarySearch(int[] nums, int target, int n) {
         int low = 0; int high = n-1;
