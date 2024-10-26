@@ -1,39 +1,35 @@
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
 
 public class Main {
-    static int[] dx = {-1, 1, 0, 0}; // 상 하 좌 우
-    static int[] dy = {0, 0, -1, 1};
-    static int max = Integer.MIN_VALUE;
-
+    static int[][] dp;
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        int T = Integer.parseInt(br.readLine());
+        dp = new int[14][14];
+        int init = 1;
+        for(int i = 0; i < 14; i++){
+            dp[0][i] = init;
+            init += (i+2);
+        }
+        for(int i = 0; i < 14; i++){
+            dp[i][0] = 1;
+        }
 
-        SortedMap<Integer, Integer> map = new TreeMap<>();
-        map.put(1, 1);
-        map.put(2, 2);
-        map.put(3, 3);
-        map.put(4, 4);
-
-        System.out.println(map.tailMap(2));
-        System.out.println(map.firstKey());
-        System.out.println(map.lastKey());
-
-        System.out.println(map.toString());
-    }
-    public static int binarySearch(int[] nums, int target, int n) {
-        int low = 0; int high = n-1;
-        while (low <= high) {
-            int mid = (low + high)/2;
-            if(target==nums[mid]){
-                return mid;
-            }
-            else if(target<nums[mid]){
-                high = mid-1;
-            }
-            else if(target>nums[mid]){
-                low = mid + 1;
+        for(int i = 1; i < 14; i++){
+            for(int j = 1; j < 14; j++){
+                dp[i][j] = dp[i][j-1] + dp[i-1][j];
             }
         }
-        return low;
+        for(int i = 0; i < T; i++){
+            int K = Integer.parseInt(br.readLine());
+            int N = Integer.parseInt(br.readLine());
+            bw.write(dp[K-1][N-1] + "\n");
+        }
+
+        bw.flush();
+        bw.close();
     }
+
 }
