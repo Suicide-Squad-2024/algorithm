@@ -1,6 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     static int[] dx = {-1, 1, 0, 0}; // 상 하 좌 우
@@ -8,8 +7,18 @@ public class Main {
     static int max = Integer.MIN_VALUE;
 
     public static void main(String[] args) throws IOException {
-        int[] nums = {1, 2, 3, 4, 6, 7, 8, 9, 10};
-        System.out.println(binarySearch(nums, 0, 9));
+
+        SortedMap<Integer, Integer> map = new TreeMap<>();
+        map.put(1, 1);
+        map.put(2, 2);
+        map.put(3, 3);
+        map.put(4, 4);
+
+        System.out.println(map.tailMap(2));
+        System.out.println(map.firstKey());
+        System.out.println(map.lastKey());
+
+        System.out.println(map.toString());
     }
     public static int binarySearch(int[] nums, int target, int n) {
         int low = 0; int high = n-1;
