@@ -1,27 +1,45 @@
+import java.io.*;
+import java.util.StringTokenizer;
+
 public class Main {
-    public static void main(String[] args)  {
-        int[] nums = {1, 2, 3, 5, 7, 10};
+    static int[] seq;
+    static int[] dp;
+    static int count = 0;
 
-        int count = 0;
-        int target = 5;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        seq = new int[N];
+        dp = new int[N];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        br.close();
+        for (int i = 0; i < N; i++) {
+            seq[i] = Integer.parseInt(st.nextToken());
+        }
+        dp[N - 1] = 1;
 
-        int s = 0;
-        int e = 5;
+        int answer = 1;
+        for (int i = 0; i < seq.length; i++) {
+            answer = Math.max(answer, dfs(-1, i));
+        }
+        System.out.println(answer);
+        System.out.println(count);
+    }
+    // seq[index] < seq[i] -> dfs(i) + 1;
 
-        while(s < e){
-            int sum = nums[s] + nums[e];
-            if(sum < target){
-                s++;
-            }else if(sum > target){
-                count += (e - s);
-                e--;
-            }else{
-                count += (e - s);
-                s++;
-                e--;
+    public static int dfs(int prev, int index) {
+        count++;
+        System.out.println(prev + " " + index);
+        if (dp[index] != 0) {
+            return dp[index];
+        }
+        int ret = 1;
+        for (int i = index + 1; i < seq.length; i++) {
+            if (seq[index] < seq[i]) {
+                ret = Math.max(dfs(index, i) + 1, ret);
             }
         }
-
-        System.out.println(count);
+        dp[index] = ret;
+        return ret;
     }
 }
